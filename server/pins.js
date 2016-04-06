@@ -2,12 +2,13 @@
 var request = require('request').defaults({ encoding: null });
 var md5 = require('md5');
 var fs = require('fs');
+var path = require('path');
 
 module.exports = function(app, db) {
 
   function saveImage(buffer, ext) {
     var fileName = md5(buffer) + '-' + new Date().getTime() + '.' + ext;
-    var name = __dirname + '/../public/images/' + fileName;
+    var name = path.resolve(__dirname + '/../public/images/') + fileName;
     var wstream = fs.createWriteStream(name);
     wstream.write(buffer);
     wstream.end();
