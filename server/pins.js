@@ -70,6 +70,10 @@ module.exports = function(app, db) {
   });
 
   app.post('/api/pins' , function(req, res) {
+    if (!req.session.user || !req.session.user.id) {
+      return res.status(403).end();
+    }
+
     var pin = req.body.pin;
     pin.userId = req.session.user.id;
     validateImage(pin.image, function(paths) {
