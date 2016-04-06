@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-xs-12">
+<div class="pins">
+{{#masonry-grid items=myPins itemSelector=".pin" as |item|}}
+  <div class="image">
+    {{#if item.image}}
+      <img src="{{item.image}}" />
+    {{else}}
+      <i class="fa fa-picture-o"></i>
+    {{/if}}
+  </div>
+  <div class="title">
+    {{item.title}}
+  </div>
+  <button class="btn btn-sm btn-primary btn-block" {{action 'removePin' item}}>Remove</button>
+{{/masonry-grid}}
+</div>
+</div>
+</div>

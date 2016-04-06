@@ -1,3 +1,4 @@
+<div class="container">
 <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -9,15 +10,16 @@
           </button>
           {{#link-to 'home' class="navbar-brand"}}
             <i class="fa fa-star-o"></i>
-            Night Life app
+            Pins
           {{/link-to}}
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
           <ul class="nav navbar-nav navbar-right">
-            {{#if places.length}}
-              <li>{{#link-to 'amgoing'}}Places i'm going{{/link-to}}</li>
+            {{#if user.login}}
+              <li>{{#link-to 'mypins'}}My Pins{{/link-to}}</li>
+              <li>{{#link-to 'addpin'}}Add Pin{{/link-to}}</li>
             {{/if}}
             {{user-info}}
           </ul>
@@ -26,11 +28,11 @@
 </nav>
 
 
-<div class="container">
+
 {{outlet}}
 
 
-<div class="text-center">by <a href="https://www.freecodecamp.com/linuxenko">@linuxenko</a>
+<div class="text-center copy">by <a href="https://www.freecodecamp.com/linuxenko">@linuxenko</a>
    github <a href="https://github.com/b37t1td/pinapp-freecodecamp">repo</a> of this app.
 </div>
 </div>

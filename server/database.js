@@ -12,6 +12,41 @@ module.exports = function Database(callback) {
     callback();
   });
 
+  this.removePin = function(id, cb) {
+    var pins = db.collection('pins');
+
+    pins.remove({_id : new ObjectId(id)}, function(err, d) {
+      if (err) return cb(err);
+      cb(null, d);
+    });
+  }
+
+  this.findPin = function(id, cb) {
+    var pins = db.collection('pins');
+
+    pins.findOne({_id : new ObjectId(id)}, function(err, pin) {
+      if (err) return cb(err);
+      cb(null, pin);
+    });
+  }
+
+  this.findPins = function(cb) {
+    var pins = db.collection('pins');
+
+    pins.find({}).toArray(function(err, data) {
+      if (err) return cb(err);
+      cb(null, data);
+    });
+  }
+
+  this.createPin = function(data, cb) {
+    var pins = db.collection('pins');
+
+    pins.insert(data, function(err, d) {
+      if (err) return cb(err);
+      cb(null,data);
+    })
+  }
 
   this.createLogin = function(data, cb) {
     var logins = db.collection('logins');
